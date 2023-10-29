@@ -19,11 +19,16 @@ const TodoModel = sequelize.define('Todo', {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
   }, 
   {
     tableName: 'todo',
     freezeTableName: true,
     timestamps: true,
+    paranoid: true,
   },
 );
 
