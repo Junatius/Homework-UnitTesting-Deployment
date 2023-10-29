@@ -59,11 +59,10 @@ async function updateTodo(id, { title, description, completed}) {
 async function deleteTodo(id) {
   try {
     const result = await todoRepositories.deleteTodo(id);
-    if (result) {
-      return result;
-    } else {
+    if (result[0] === 0) {
       throw new Error('Todo not found');
     }
+    return result;
   } catch (error) {
     throw new Error('Error deleting todo in repository: ' + error.message);
   }
